@@ -5,9 +5,10 @@ require_once('UserRepository.php');
 require_once('Db.php');
 
 use App\Container;
+use App\UserController;
 
 try {
-    $controller = (new Container())->get('controller.user');
+    $controller = (new Container())->get(UserController::class);
     echo $controller->handle();
 } catch (Throwable $exception) {
     echo 'Ошибка: ' . $exception->getMessage();
