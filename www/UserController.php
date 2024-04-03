@@ -7,10 +7,11 @@ class UserController
 {
     private UserRepository $userRepository;
 
-    public function setUserRepository(UserRepository $userRepository): self
+    public function __construct(
+        UserRepository $userRepository
+    )
     {
         $this->userRepository = $userRepository;
-        return $this;
     }
 
     /**
@@ -20,7 +21,7 @@ class UserController
     {
         $user = $this->userRepository->findByEmail('vasya@email.com');
         if (empty($user)) {
-            throw new Exception('Пользователь не найден!');
+            throw new \Exception('Пользователь не найден!');
         }
         return <<<RESPONSE
 Имя пользователя: $user->name

@@ -8,14 +8,11 @@ use App\UserController;
 use App\UserRepository;
 
 try {
-    $controller = (new UserController())
-        ->setUserRepository(
-            (new UserRepository())
-                ->setDb(
-                    new Db()
-                )
+    $controller = (new UserController(
+        new UserRepository(
+            new Db()
         )
-    ;
+    ));
     echo $controller->handle();
 } catch (Throwable $exception) {
     echo 'Ошибка: ' . $exception->getMessage();

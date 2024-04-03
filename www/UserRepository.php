@@ -7,10 +7,11 @@ class UserRepository
 
     private Db $db;
 
-    public function setDb(Db $db): self
+    public function __construct(
+        Db $db
+    )
     {
         $this->db = $db;
-        return $this;
     }
 
     public function findByEmail(string $email): ?User
