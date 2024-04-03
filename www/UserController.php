@@ -5,15 +5,20 @@ use Exception;
 
 class UserController
 {
+    private UserRepository $userRepository;
+
+    public function setUserRepository(UserRepository $userRepository): self
+    {
+        $this->userRepository = $userRepository;
+        return $this;
+    }
 
     /**
      * @throws Exception
      */
     public function handle()
     {
-        $repo = new UserRepository();
-        // Тут, конечно, будет $_POST['email']:
-        $user = $repo->findByEmail('vasya@email.com');
+        $user = $this->userRepository->findByEmail('vasya@email.com');
         if (empty($user)) {
             throw new Exception('Пользователь не найден!');
         }
