@@ -1,0 +1,4 @@
+.idea
+db-data/pgadmin-data
+db-data/postgres-data
+logs
