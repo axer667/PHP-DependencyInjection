@@ -5,14 +5,10 @@ namespace App;
 class UserRepository
 {
 
-    private Db $db;
-
     public function __construct(
-        Db $db
+        private Db $db
     )
-    {
-        $this->db = $db;
-    }
+    {}
 
     public function findByEmail(string $email): ?User
     {

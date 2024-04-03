@@ -5,14 +5,10 @@ use Exception;
 
 class UserController
 {
-    private UserRepository $userRepository;
-
     public function __construct(
-        UserRepository $userRepository
+        private UserRepository $userRepository
     )
-    {
-        $this->userRepository = $userRepository;
-    }
+    {}
 
     /**
      * @throws Exception
